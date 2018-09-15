@@ -10,7 +10,7 @@ from .forms import ContactForm
 #    return render(request, 'Contacts/index.html')
 
 def index(request):
-    Contact_list = Contact.objects.order_by('first')
+    Contact_list = Contact.objects.order_by('id')
 
     form = ContactForm()
 
@@ -21,11 +21,12 @@ def index(request):
 def addContact(request):
     form = ContactForm(request.POST)
 
-    print(request.POST['title'])
+    #print(request.POST['title'])
 
     if form.is_valid():
         new_contact = Contact(first_name=request.POST['first'], last_name=request.POST['last'],
-                                phone_number=request.POST['phone'], email=require_POST['email'])
+                                phone_number=request.POST['phone'])
+                              #email_address=require_POST['email'])
         new_contact.save()
 
     return redirect('index')
