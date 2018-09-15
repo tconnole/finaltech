@@ -6,15 +6,15 @@ from .forms import ContactForm
 
 
 #def index(request):
-#    contex = {}
+#    context = {}
 #    return render(request, 'Contacts/index.html')
 
 def index(request):
-    reminder_list = Contact.objects.order_by('id')
+    Contact_list = Contact.objects.order_by('first')
 
     form = ContactForm()
 
-    context = {'reminder_list' : reminder_list, 'form' : form}
+    context = {'Contact_list' : Contact_list, 'form' : form}
     return render(request, 'Contacts/index.html', context)
 
 @require_POST
@@ -24,15 +24,15 @@ def addContact(request):
     print(request.POST['title'])
 
     if form.is_valid():
-        new_reminder = Contact(title_text=request.POST['title'], due_date=request.POST['due'],
-                                Contact_description=request.POST['desc'])
-        new_reminder.save()
+        new_contact = Contact(first_name=request.POST['first'], last_name=request.POST['last'],
+                                phone_number=request.POST['phone'], email=require_POST['email'])
+        new_contact.save()
 
     return redirect('index')
 
 def completeContact(request, Contact_id):
-    reminder = Contact.objects.get(pk=Contact_id)
-    reminder.delete()
+    contact = Contact.objects.get(pk=Contact_id)
+    contact.delete()
 
     return redirect('index')
 

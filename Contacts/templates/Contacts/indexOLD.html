@@ -21,8 +21,8 @@
 				<div class="col-lg-4 col-lg-offset-4" id="content">
 					<h2>View and Add Contacts</h2>
 
-					<form action="{% url 'add' %}" method="POST" role="form">
-                             {% csrf_token %}
+					<form action="#" method="POST" role="form">
+
 						<div class="form-group">
 							<div class="input-group">
 							  <input type="text" class="form-control" placeholder="First Name
@@ -34,7 +34,7 @@
                                  <br><input type="text" class="form-control" placeholder="Email
 " aria-label="Todo" aria-describedby="add-btn">
 							  <span class="input-group-btn">
-								  <br><br><button type="submit" id="add-btn">ADD Contact</button>
+								  <br><br><button type="submit" id="add-button">ADD Contact</button>
 							  </span>
 							</div>
 						</div>
@@ -57,6 +57,10 @@
 						</div>
 					</div>
 
+					<ul class="list-group t20">
+						<li class="list-group-item">Create my new awesome website.</li>
+						<li class="list-group-item todo-completed">Attend weekly coding session.</li>
+						<li class="list-group-item">Visit the gym.</li>
 					</ul>
 				</div>
 			</div>
